@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Valentine 💕</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(180deg, #ffc1d6, #ff9fc2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Georgia', serif;
+        overflow: hidden;
+        color: #7a003c;
+    }
+
+    .container {
+        text-align: center;
+        position: relative;
+        padding: 20px;
+        max-width: 420px;
+        width: 100%;
+        z-index: 2;
+    }
+
+    h1 {
+        font-size: 3rem;
+        margin: 0;
+        line-height: 1.2;
+        animation: floatText 3s ease-in-out infinite;
+    }
+
+    @keyframes floatText {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+        100% { transform: translateY(0); }
+    }
+
+    h1 span {
+        color: #ff2f7a;
+        font-weight: bold;
+    }
+
+    .subtitle {
+        margin-top: 10px;
+        font-size: 1.1rem;
+        opacity: 0.9;
+    }
+
+    .buttons {
+        border: 2px solid transparent;
+        position: relative;
+        width: 340px;
+        height: 120px;
+        margin: 40px auto 0;
+    }
+
+
+    button {
+        border: none;
+        border-radius: 30px;
+        padding: 14px 36px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: transform 0.15s ease;
+        width: 150px;
+        height: 55px;
+        box-sizing: border-box;
+    }
+
+    button:active {
+        transform: scale(0.92);
+    }
+
+    #yesBtn {
+        position: absolute;
+        background: linear-gradient(#ff2fba, #ff2fd2) padding-box,
+                    linear-gradient(135deg, #fff, #ffd6e6) border-box;
+        border: 2px solid #cb215a;
+        box-shadow:
+            0 0 0 2px rgba(255,255,255,0.4),
+            0 8px 18px rgba(255, 47, 122, 0.45);
+        left: 0;
+        background: #ff2f7a;
+        color: white;
+        box-shadow: 0 8px 18px rgba(255, 47, 122, 0.45);
+    }
+
+    #noBtn {
+        position: absolute;
+        right: 0;
+        border: 2px solid #ffb6c9;
+        background: #fff0f5;
+        color: #7a003c;
+        box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+        transition: left 0.25s ease, top 0.25s ease, transform 0.15s ease;
+
+    }
+
+    .hint {
+        margin-top: 60px;
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+
+    /* Floating hearts */
+    .heart {
+        position: fixed;
+        bottom: -20px;
+        font-size: 22px;
+        opacity: 0.6;
+        animation: float 7s linear infinite;
+        pointer-events: none;
+    }
+
+    @keyframes float {
+        20% { opacity: 0.7; }
+        100% { transform: translateY(-110vh); opacity: 0; }
+    }
+
+    /* YES SCREEN */
+    .card {
+        background: #fff0f5;
+        border-radius: 18px;
+        padding: 20px;
+        margin-top: 30px;
+        box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+    }
+
+    .yay {
+        font-size: 2.2rem;
+        color: #ff2f7a;
+        margin-bottom: 10px;
+    }
+
+    .message {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-top: 10px;
+    }
+
+    .love-gif {
+        width: 120px;
+        max-width: 100%;
+        margin: 0 auto 20px;
+        display: block;
+        animation: popIn 0.6s ease-out;
+    }
+
+    @keyframes popIn {
+        0% { transform: scale(0.6); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="container" id="main">
+    <h1>Hey Chikkoo,<br>Will you be my<br><span>Valentine?</span></h1>
+    <div class="subtitle">Choose wisely… 💕</div>
+
+    <div class="buttons">
+        <button id="yesBtn">Yes! 💖</button>
+        <button id="noBtn">No 🥺</button>
+    </div>
+
+    <div class="hint">Hint: The “No” button is a bit shy… 😉</div>
+</div>
+
+<script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const main = document.getElementById("main");
+
+    function moveNo() {
+        const padding = 20;
+        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - padding);
+        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - padding);
+
+        noBtn.style.position = "fixed";
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    }
+
+    noBtn.addEventListener("mouseenter", moveNo);
+    noBtn.addEventListener("touchstart", moveNo);
+
+
+    yesBtn.addEventListener("click", () => {
+        main.innerHTML = `
+        
+        <div class="yay">Yay! 🎉<br>Good Choice!</div>
+        <br>
+        <img 
+            src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZW5zM2EwMHMxeXplcWQwOXduYXhrZjFpdzFqN24zemd4eGprZ2lubSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Xw6yFn7frR3Y4/giphy.gif"
+            alt="Love gif"
+            class="love-gif"
+        />
+
+            <div class="card">
+                <div class="message">
+                    I knew you’d say yes 💖<br><br>
+                    You’ve made me the happiest person in the world.
+                    Can’t wait to celebrate this special day with you 🌹<br>
+                    Btw, Advance Happy anniversary 💝
+                    <br><br>💗 💗 💗
+                </div>
+            </div>
+        `;
+        launchConfetti();
+    });
+
+    // Floating hearts
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerText = "♡";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = 5 + Math.random() * 3 + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 8000);
+    }, 350);
+
+    function launchConfetti() {
+        for (let i = 0; i < 120; i++) {
+            const c = document.createElement("div");
+            c.style.position = "fixed";
+            c.style.width = "8px";
+            c.style.height = "8px";
+            c.style.background = ["#ff2f7a", "#ffc1d6", "#ff9fc2"][Math.floor(Math.random()*3)];
+            c.style.left = Math.random() * 100 + "vw";
+            c.style.top = "-10px";
+            c.style.opacity = 0.8;
+            c.style.transform = `rotate(${Math.random()*360}deg)`;
+            c.style.animation = "fall 3s linear forwards";
+            document.body.appendChild(c);
+
+            setTimeout(() => c.remove(), 3500);
+        }
+    }
+
+    const style = document.createElement("style");
+    style.innerHTML = `
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+        }
+    `;
+    document.head.appendChild(style);
+</script>
+
+</body>
+</html>
